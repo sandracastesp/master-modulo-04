@@ -64,7 +64,7 @@ function eliminarNota(titulo) {
     const notasFiltradas = notas.filter((nota) => nota.titulo !== titulo);
 
     if (notasFiltradas.length === notas.length) {
-      console.log(`⚠️ No se encontró una nota con el título "${titulo}".`);
+      console.log(`No se encontró una nota con el título "${titulo}".`);
     } else {
       // PISTA: Sobrescribe el archivo con las notas actualizadas.
       // COMPLETAR: Usa fs.writeFileSync.
