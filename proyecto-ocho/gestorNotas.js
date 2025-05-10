@@ -15,12 +15,13 @@ function agregarNota(titulo, contenido) {
   if (fs.existsSync(filePath)) {
     // PISTA: Aquí debes leer las notas existentes antes de agregar la nueva.
     // COMPLETAR: Usa fs.readFileSync para leer el archivo.
-    console.log("Notas existentes.");
-    const data = fs.readFileSync(filePath, 'utf8');
+
+    // console.log("Existen notas.");
+    const data = fs.readFileSync(filePath, "utf8");
     notas = JSON.parse(data);
-  } else {
-    console.log("No existen notas.");
-  }
+  } /* else {
+  console.log("No existen notas.");
+} */
 
   const nuevaNota = { titulo, contenido };
   notas.push(nuevaNota);
@@ -28,7 +29,7 @@ function agregarNota(titulo, contenido) {
   // PISTA: Ahora debes sobrescribir el archivo con las notas actualizadas.
   // COMPLETAR: Usa fs.writeFileSync para guardar las notas.
   fs.writeFileSync(filePath, JSON.stringify(notas, null, 2));
-  console.log(`Nota "${titulo}" guardada.`);
+  console.log(`Nota "${titulo}" agregada con éxito.`);
 }
 
 /**
@@ -48,6 +49,7 @@ function listarNotas() {
     console.log("No hay notas guardadas.");
   }
 }
+
 /**
  * Elimina una nota por su título.
  * @param {string} titulo - El título de la nota a eliminar.
@@ -78,5 +80,6 @@ function eliminarNota(titulo) {
 
 // Ejecución de ejemplo
 agregarNota("Compras", "Comprar leche y pan.");
+agregarNota("Trabajo", "Terminar reporte semanal.");
 listarNotas();
 eliminarNota("Compras");
